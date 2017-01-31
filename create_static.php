@@ -50,7 +50,7 @@
 
 
     $sql = "INSERT INTO StaticData (eventid, CaseOwner, Age)
-    VALUES (22,'John Smith', 16)";
+    VALUES (225,'John Smitt', 16)";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
@@ -59,7 +59,7 @@
     }
 
     $sql = "INSERT INTO StaticData (eventid, CaseOwner, Age)
-        VALUES (24,'John Smith', 18)";
+        VALUES (245,'John Smitt', 18)";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
@@ -68,7 +68,7 @@
     }
 
     $sql = "INSERT INTO StaticData (eventid, CaseOwner, Age)
-        VALUES (212,'John Smith', 45)";
+        VALUES (2125,'John Smitt', 45)";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
