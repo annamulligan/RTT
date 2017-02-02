@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="getStaticData.js"></script>
+</head>
+<body>
+<script>
+    function go() {
+
+
+        var data= getData("John Smith");
+        var count = 0;
+
+
+        var headers = getCols();
+        var selHeaders = [];
+        var selection = ["eventid", "Age"];
+       // alert("Data" + data[0]);
+
+        for (var i in headers) {
+            //alert(headers[i]);
+            for (var j in selection) {
+                if (headers[i] == selection[j]) {
+                   // alert("match" + headers[i]);
+                    selHeaders[count] = i;
+                    count++;
+                }
+            }
+        }
+        alert(selHeaders);
+    }
+    go();
+</script>
+
+</body>
+</html>

@@ -25,7 +25,7 @@
 
            while($row = $result->fetch_assoc()) {
 
-               $dbArray[] = array($row);
+               $dbArray[] = $row;
 
             }
             //send the array with all the data for given case owner

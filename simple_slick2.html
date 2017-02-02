@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Slickgrid</title>
+    <link rel="stylesheet" href="SlickGrid-master/slick.grid.css" type="text/css"/>
+    <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
+    <link rel="stylesheet" href="SlickGrid-master/examples/examples.css" type="text/css"/>
+</head>
+<body>
+<table width="100%">
+    <tr>
+        <td valign="top" width="50%">
+            <div id="myGrid" style="width:600px;height:500px;"></div>
+        </td>
+        <td valign="top">
+            <h2>Demonstrates:</h2>
+            <ul>
+                <li>basic grid with minimal configuration</li>
+            </ul>
+
+        </td>
+    </tr>
+</table>
+
+<script src="SlickGrid-master/lib/jquery-1.7.min.js"></script>
+<script src="SlickGrid-master/lib/jquery.event.drag-2.2.js"></script>
+<script src="slickgrid_simple.js"></script>
+
+<script src="SlickGrid-master/slick.core.js"></script>
+<script src="SlickGrid-master/slick.grid.js"></script>
+<script src="getStaticData.js"></script>
+
+<script>
+
+    var grid;
+    var columns = [
+        {id: "eventid", name: "Event ID", field: "eventid"},
+        {id: "CaseOwner", name: "Case Owner", field: "CaseOwner"},
+        {id: "Age", name: "Age", field: "Age"}
+    ];
+
+    var options = {
+        enableCellNavigation: true,
+        enableColumnReorder: false
+    };
+
+    $(function () {
+        var data = getData("John Smith");
+        //alert(data[0]);
+
+        grid = new Slick.Grid("#myGrid", data, columns, options);
+    })
+</script>
+</body>
+</html>
