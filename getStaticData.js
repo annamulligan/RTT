@@ -23,8 +23,27 @@ function getData(str) {
 
 
 }
+
+function resetData() {
+    var xhttp;
+    var msg = "";
+
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+
+        }
+
+    };
+    xhttp.open("GET", "reset_db.php?", false);
+    xhttp.send();
+
+
+}
 //returns column names from DB
-function getCols() {
+function getCol() {
     var xhttp;
     var msg = [];
 

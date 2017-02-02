@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
     <link rel="stylesheet" href="SlickGrid-master/examples/examples.css" type="text/css"/>
     <script src="getColListFromChecks.js"></script>
+    <script src="getStaticData.js"></script>
 </head>
 <style>
     body {font-family: "Lato", sans-serif;}
@@ -93,7 +94,7 @@
 
         var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name"},
             {id: "CO_name2", name:"Case Owner", field:"CO_name2"},
-            {id: "diagnosis1", name:"Claim Number", field:"diagnosis1"},
+            {id: "EventId", name:"Claim Number", field:"EventId"},
             {id: "Claim_rating", name:"Claim rating", field:"Claim_rating"},
             {id: "ECO_min", name:"Min duration", field:"ECO_min"},
             {id: "ECO_opt", name:"Optimum duration", field:"ECO_opt"},
@@ -152,6 +153,8 @@
             {id: "care_ind", name:"Care Indicator", field:"care_ind"},
             {id: "ap_lastupdatedate", name:"Action Plan Last Update", field:"ap_lastupdatedate"},
             {id: "ap_CLIENTREVIEWDATE", name:"Action Plan Review Date", field:"ap_CLIENTREVIEWDATE"}];
+        var data = getData("John Smith");
+        alert("hello");
         function myClaims() {
         var selections = [];
 
@@ -182,17 +185,18 @@
         };
 
         $(function () {
-            var data = [];
-            for (var i = 0; i < 500; i++) {
+
+            /*for (var i = 0; i < 500; i++) {
                 data[i] = {
                     tm_name: "Task " + i,
                     //CO_name2: "5 days",
                     diagnosis1 : "Hello"
 
                 };
-            }
-            alert(data);
+            }*/
+           // alert(data);
             makeGrid(columns, data);
+            //resetData();
 
         }
 

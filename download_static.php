@@ -10,14 +10,14 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "RTT";
+        $dbname = "RTT_2";
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM StaticData where CaseOwner ='" . $ReportOwner . "'";
+        $sql = "SELECT * FROM staticdata where CO_name ='" . $ReportOwner . "'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
