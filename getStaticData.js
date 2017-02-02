@@ -13,7 +13,7 @@ function getData(str) {
                 //document.getElementById("txtHint").innerHTML = this.responseText;
 
                msg = JSON.parse(this.responseText);
-               xhttp.close();
+
 
             }
 
