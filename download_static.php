@@ -22,21 +22,14 @@
 
         if ($result->num_rows > 0) {
             // output data of each row
-            //echo $result->fetch_assoc();
 
-            //$static_info =
-            //echo json_encode($result);
-            //$goo = array(1,2,3,4,5);
-           // $goo = array($result);
-           // echo json_encode($goo);
-           // echo $static_info;
            while($row = $result->fetch_assoc()) {
-                //echo "eventid: " . $row["eventid"]. " - Name: " . $row["CaseOwner"]. " " . $row["Age"]. "<br>";
-                //echo $row;
-               $goo[] = array($row);
-               echo json_encode($goo);
+
+               $dbArray[] = array($row);
 
             }
+            //send the array with all the data for given case owner
+            echo json_encode($dbArray);
 
 
         } else {
@@ -45,7 +38,7 @@
         $conn->close();
     }
 
-      $q = $_REQUEST["q"];
+    $q = $_REQUEST["q"];
     getStatic($q);
 
 ?>
