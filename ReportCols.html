@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <ul id = "ReportColsList">
+        <input type="checkbox" name="TM_name" value="Team Manager"> Team Manager<br>
+        <input type="checkbox" name="EventId" value="Claim Number"> Claim Number <br>
+        <input type="button" onclick = "getCols()" value="Finished Selecting">
+        </ul>
+    </form>
+</body>
+<script>
+    function getCols(){
+        var checkBoxListId = "ReportColsList"
+        var elementRef = document.getElementById(checkBoxListId);
+        var checkBoxArray = elementRef.getElementsByTagName('input');
+        var selections = [];
+        var count = 0;
+        for (var i in checkBoxArray){
+            if(checkBoxArray[i].checked==true){
+                selections[count] = checkBoxArray[i].value;
+                count++;
+            }
+        }
+        //alert(selections[0]);
+    }
+</script>
+
+
+</html>
