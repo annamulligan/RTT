@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="SlickGrid-master/slick.grid.css" type="text/css"/>
     <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
     <link rel="stylesheet" href="SlickGrid-master/examples/examples.css" type="text/css"/>
+    <script src="getColListFromChecks.js"></script>
 </head>
 <style>
     body {font-family: "Lato", sans-serif;}
@@ -74,10 +75,7 @@
                 <div id="myGrid" style="width:600px;height:500px;"></div>
             </td>
             <td valign="top">
-                <h2>Demonstrates:</h2>
-                <ul>
-                    <li>basic grid with minimal configuration</li>
-                </ul>
+
 
             </td>
         </tr>
@@ -91,6 +89,7 @@
     <script src="SlickGrid-master/slick.grid.js"></script>
 
     <script>
+
 
         var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name"},
             {id: "CO_name2", name:"Case Owner", field:"CO_name2"},
@@ -153,10 +152,17 @@
             {id: "care_ind", name:"Care Indicator", field:"care_ind"},
             {id: "ap_lastupdatedate", name:"Action Plan Last Update", field:"ap_lastupdatedate"},
             {id: "ap_CLIENTREVIEWDATE", name:"Action Plan Review Date", field:"ap_CLIENTREVIEWDATE"}];
+        function myClaims() {
+        var selections = [];
 
-        var selections = ["SCU Stage", "Claim Number", "Team Manager"];
+
+            selections = getCols();
+            //alert(selections[0]);
+            //alert(selections.length);
+
+
         var columns =[];
-        alert(columns1[3].name);
+        //alert(columns1[3].name);
         for (var j in columns1){
             //alert(columns1[j]);
             for (var i in selections){
@@ -168,7 +174,7 @@
             }
 
         }
-        alert(columns.length);
+        //alert(columns.length);
 
         var options = {
             enableCellNavigation: true,
@@ -187,7 +193,9 @@
             }
             makeGrid(columns, data);
 
-        })
+        }
+
+        )}
     </script>
 
 
@@ -195,29 +203,47 @@
 
 <div id="ReportCols" class="tabcontent">
     <h3>Report Columns</h3>
+    <form>
+        <ul id = "ReportColsList">
+            <input type="checkbox" name="TM_name" value="Team Manager"> Team Manager<br>
+            <input type="checkbox" name="EventId" value="Claim Number"> Claim Number <br>
+            <!-- <input type="button" onclick = "getSelection()" value="Finished Selecting">
+            -->
+         </ul>
+     </form>
+     <script>
+       /*  function getSelection(){
 
-</div>
+             return getCols();
+         }*/
+     </script>
 
-<div id="Tokyo" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
-</div>
+ </div>
 
-<script>
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
+ <div id="Tokyo" class="tabcontent">
+     <h3>Tokyo</h3>
+     <p>Tokyo is the capital of Japan.</p>
+ </div>
 
-</body>
-</html>
+ <script>
+     function openCity(evt, cityName) {
+         var i, tabcontent, tablinks;
+         tabcontent = document.getElementsByClassName("tabcontent");
+         for (i = 0; i < tabcontent.length; i++) {
+             tabcontent[i].style.display = "none";
+         }
+         tablinks = document.getElementsByClassName("tablinks");
+         for (i = 0; i < tablinks.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" active", "");
+         }
+         document.getElementById(cityName).style.display = "block";
+         evt.currentTarget.className += " active";
+
+         if(cityName == "Myclaims"){
+             myClaims();
+         }
+     }
+ </script>
+
+ </body>
+ </html>
