@@ -6,12 +6,14 @@ function getCols(){
     var elementRef = document.getElementById(checkBoxListId);
     var checkBoxArray = elementRef.getElementsByTagName('input');
     var selections = [];
-    var count = 0;
+
+    var count = 1;
     for (var i =0; i <checkBoxArray.length; i++){
         if(checkBoxArray[i].checked==true){
             selections[count] = checkBoxArray[i].value;
             count++;
         }
+
     }
     //alert(selections.length);
     return selections;

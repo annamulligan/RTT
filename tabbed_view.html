@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <title>Slickgrid</title>
+    <title>RTT</title>
     <link rel="stylesheet" href="SlickGrid-master/slick.grid.css" type="text/css"/>
     <link rel="stylesheet" href="SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css" type="text/css"/>
     <link rel="stylesheet" href="SlickGrid-master/examples/examples.css" type="text/css"/>
@@ -111,9 +111,9 @@
     <script>
 
 
-        var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name"},
+        var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name", sortable: true},
             {id: "CO_name2", name:"Case Owner", field:"CO_name2"},
-            {id: "EventId", name:"Claim Number", field:"EventId"},
+            {id: "EventId", name:"Claim Number", field:"EventId", sortable: true},
             {id: "Claim_rating", name:"Claim rating", field:"Claim_rating"},
             {id: "ECO_min", name:"Min duration", field:"ECO_min"},
             {id: "ECO_opt", name:"Optimum duration", field:"ECO_opt"},
@@ -179,36 +179,28 @@
             selections = getCols();
 
 
+
             var columns =[];
+            columns[0] = columns1[2];
             //alert(columns1[3].name);
             for (var j in columns1){
                 //alert(columns1[j]);
-                for (var i in selections){
+                for (i = 0; i <  selections.length; i++){
                     if (columns1[j].name == selections[i]){
                         // alert(selections[i].name);
-                        columns[i] = columns1[j];
+                        columns[i+1] = columns1[j];
                     }
 
                 }
 
             }
+
+
             //alert(columns.length);
 
-            var options = {
-                enableCellNavigation: true,
-                enableColumnReorder: true
-            };
+
 
             $(function () {
-
-                /*for (var i = 0; i < 500; i++) {
-                    data[i] = {
-                        tm_name: "Task " + i,
-                        //CO_name2: "5 days",
-                        diagnosis1 : "Hello"
-
-                    };
-                }*/
 
                 makeGrid(columns, data);
 
@@ -221,13 +213,12 @@
 
 </div>
 
-<div id="ReportCols" class>
+<div id="ReportCols" class="tabcontent">
 
     <form>
         <div id = "ReportColsList" class = "flex-container">
             <div class =  "flex-item">
                 <h4>Weekly Comp Columns</h4>
-                <input type = "checkbox" name = "wcdays" value = "WC days actually paid"> WC days actually paid<br>
                 <input type = "checkbox" name = "WC_to" value = "WC to Date"> WC to Date<br>
                 <input type = "checkbox" name = "Next_KPI" value = "Next KPI"> Next KPI<br>
                 <input type = "checkbox" name = "Next_KPI_crossing_date" value = "Next KPI Crossing Date"> Next KPI Crossing Date<br>
@@ -318,13 +309,6 @@
 
 
 
-            <input type = "checkbox" name = "change_diag" value = "Diag Changed"> Diag Changed<br>
-
-
-
-
-
-            <input type = "checkbox" name = "RPC_comp_date2" value = "RPC sorting column"> RPC sorting column<br>
 
 
             <!-- <input type="button" onclick = "getSelection()" value="Finished Selecting">
