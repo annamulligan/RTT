@@ -9,28 +9,85 @@
 <body>
 <script>
     function go() {
+        var parts;
+        var mydate;
+
+
 
 
         var data= getData("John Smith");
-        var count = 0;
+        var i = 60;
+        data[i].ECO_min = "19";
+        data[i].ECO_opt= "19";
+        data[i].ECO_max = "19";
+        data[i].wcdays = "63";
+        data[i].WC_to = "25/01/17";
 
+           if (data[i].wc_to == ""){
+               data[i].min_date = "no WC paid yet";
+               data[i].opt_date = "no WC paid yet";
+               data[i].max_date = "no WC paid yet";
 
-        var headers = getCols();
-        var selHeaders = [];
-        var selection = ["eventid", "Age"];
-       // alert("Data" + data[0]);
+           } else{
 
-        for (var i in headers) {
-            //alert(headers[i]);
-            for (var j in selection) {
-                if (headers[i] == selection[j]) {
-                   // alert("match" + headers[i]);
-                    selHeaders[count] = i;
-                    count++;
+               //min max opt dates
+               if(data[i].wcdays == "0"){
+                    parts = data[i].WC_to.split('/');
+                   mydate = new Date("20"+ parts[2],parts[1]-1,parts[0]);
+
+                   data[i].min_date = mydate.setDate(mydate.getDate() + (Number(data[i].ECO_min) - Number(data[i].wcdays) - 1));
+                   data[i].opt_date = mydate.setDate(mydate.getDate() + (Number(data[i].ECO_opt) - Number(data[i].wcdays)-1));
+                   data[i].opt_date = mydate.setDate(mydate.getDate() + (Number(data[i].ECO_max) - Number(data[i].wcdays)-1));
+               }else{
+                   parts = data[i].WC_to.split('/');
+                   //alert("20" + parts[2]);
+                   mydate = new Date("20" + parts[2],parts[1]-1,parts[0]);
+                   //(mydate);
+
+                   data[i].min_date = mydate.setDate(mydate.getDate() + (Number(data[i].ECO_min) - Number(data[i].wcdays)));
+                   data[i].opt_date = mydate.setDate(mydate.getDate() + (Number(data[i].ECO_opt) - Number(data[i].wcdays)));
+                   data[i].opt_date = mydate.setDate(mydate.getDate() + (Number(data[i].ECO_max) - Number(data[i].wcdays)));
                 }
-            }
+           }
+
+
+           //RTW claim stage
+        if(data[i].RTW_TARGETDATE == "."){
+
+               data[i].RTW_claim_stage = "No RTW date";
         }
-        alert(selHeaders);
+        else if (data[i].WC_to == "") {
+            data[i].RTW_claim_stage = "No WC days paid";
+        }
+        else if(data[i].RTW_TARGETDATE < data[i].min_date){
+            data[i].RTW_claim_stage = "1 - before min";
+        }
+        else if(data[i].RTW_TARGETDATE == data[i].min_date){
+            data[i].RTW_claim_stage = "1A -  at min";
+
+        }
+        else if(data[i].RTW_TARGETDATE < data[i].opt_date){
+            data[i].RTW_claim_stage = "2 - between opt and min";
+        }
+        else if(data[i].RTW_TARGETDATE == data[i].opt_date){
+            data[i].RTW_claim_stage = "2A -  at opt";
+        }
+        else if(data[i].RTW_TARGETDATE < data[i].max_date){
+            data[i].RTW_claim_stage = "3 - between opt and max";
+        }
+        else if(data[i].RTW_TARGETDATE == data[i].max_date){
+            data[i].RTW_claim_stage = "3A - at max";
+        }
+        else{
+            data[i].RTW_claim_stage = "4 - beyond max";
+        }
+
+
+
+
+           alert(new Date(data[i].min_date));
+
+      // }
     }
     go();
 </script>
