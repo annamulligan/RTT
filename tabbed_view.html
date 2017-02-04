@@ -113,9 +113,9 @@
     <script>
 
 
-        var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name", sortable: true},
-            {id: "CO_name2", name:"Case Owner", field:"CO_name2"},
-            {id: "EventId", name:"Claim Number", field:"EventId", sortable: true},
+        var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name", sortable: true, sorter:sorterStringCompare},
+            {id: "CO_name_com", name:"Case Owner", field:"CO_name_com", sortable: true, sorter:sorterStringCompare},
+            {id: "EventId", name:"Claim Number", field:"EventId", sortable: true, sorter:sorterNumeric},
             {id: "Claim_rating", name:"Claim rating", field:"Claim_rating"},
             {id: "ECO_min", name:"Min duration", field:"ECO_min"},
             {id: "ECO_opt", name:"Optimum duration", field:"ECO_opt"},
@@ -155,7 +155,7 @@
             {id: "IR_POServiceTo", name:"IR To Date", field:"IR_POServiceTo"},
             {id: "eq_amount", name:"Equipment Amount", field:"eq_amount"},
             {id: "IRA_amount", name:"IRA Amount", field:"IRA_amount"},
-            {id: "age", name:"Age", field:"age", sortable: true, formatter: intFormatter},
+            {id: "age", name:"Age", field:"age", sortable: true, formatter: intFormatter, sorter:sorterNumeric},
             {id: "change_diag", name:"Diag Changed", field:"change_diag"},
             {id: "ms_diag_desc", name:"Diagnosis", field:"ms_diag_desc"},
             {id: "wt_occu", name:"Occupation", field:"wt_occu"},
