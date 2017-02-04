@@ -3,12 +3,15 @@
  */
 //with sorting
 var grid;
+function intFormatter(row, cell, value, columnDef, dataContext) {
+    return parseInt(value);
+}
 
 function makeGrid(columns, data){
 
     var options = {
         enableCellNavigation: true,
-        enableColumnReorder: false,
+       enableColumnReorder: true,
         multiColumnSort: true
     };
 

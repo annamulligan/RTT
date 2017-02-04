@@ -103,6 +103,8 @@
 
     <script src="SlickGrid-master/lib/jquery-1.7.min.js"></script>
     <script src="SlickGrid-master/lib/jquery.event.drag-2.2.js"></script>
+    <script src="SlickGrid-master/lib/jquery.event.drop-2.2.js"></script>
+    <script src="SlickGrid-master/lib/jquery-ui-1.8.16.custom.min.js"></script>
     <script src="slickgrid_simple.js"></script>
 
     <script src="SlickGrid-master/slick.core.js"></script>
@@ -153,7 +155,7 @@
             {id: "IR_POServiceTo", name:"IR To Date", field:"IR_POServiceTo"},
             {id: "eq_amount", name:"Equipment Amount", field:"eq_amount"},
             {id: "IRA_amount", name:"IRA Amount", field:"IRA_amount"},
-            {id: "age_now", name:"Age", field:"age_now"},
+            {id: "age", name:"Age", field:"age", sortable: true, formatter: intFormatter},
             {id: "change_diag", name:"Diag Changed", field:"change_diag"},
             {id: "ms_diag_desc", name:"Diagnosis", field:"ms_diag_desc"},
             {id: "wt_occu", name:"Occupation", field:"wt_occu"},
@@ -174,6 +176,8 @@
             {id: "ap_CLIENTREVIEWDATE", name:"Action Plan Review Date", field:"ap_CLIENTREVIEWDATE"}];
         var data = getData("John Smith");
 
+
+
         function myClaims() {
             var selections = [];
             selections = getCols();
@@ -182,13 +186,13 @@
 
             var columns =[];
             columns[0] = columns1[2];
-            //alert(columns1[3].name);
+
             for (var j in columns1){
                 //alert(columns1[j]);
                 for (i = 0; i <  selections.length; i++){
                     if (columns1[j].name == selections[i]){
                         // alert(selections[i].name);
-                        columns[i+1] = columns1[j];
+                        columns[i] = columns1[j];
                     }
 
                 }
@@ -260,7 +264,7 @@
 
             <div class = "flex-item">
                 <h4>Model Columns</h4>
-                <input type = "checkbox" name = "EventId" value = "Claim Number"> Claim Number<br>
+
                 <input type = "checkbox" name = "Claim_rating" value = "Claim rating"> Claim rating<br>
                 <input type = "checkbox" name = "ECO_min" value = "Min duration"> Min duration<br>
                 <input type = "checkbox" name = "ECO_opt" value = "Optimum duration"> Optimum duration<br>
