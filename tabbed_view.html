@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="SlickGrid-master/examples/examples.css" type="text/css"/>
     <script src="getColListFromChecks.js"></script>
     <script src="getStaticData.js"></script>
+    <script src="slickgrid_simple.js"></script>
 </head>
 
 
 <style>
+    .highlight{
+        background-color: red;
+    }
     .flex-container{
         display: flex;
         flex-wrap: wrap;
@@ -116,7 +120,7 @@
         var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name", sortable: true, sorter:sorterStringCompare},
             {id: "CO_name_com", name:"Case Owner", field:"CO_name_com", sortable: true, sorter:sorterStringCompare},
             {id: "EventId", name:"Claim Number", field:"EventId", sortable: true, sorter:sorterNumeric},
-            {id: "Claim_rating", name:"Claim rating", field:"Claim_rating"},
+            {id: "Claim_rating", name:"Claim rating", field:"Claim_rating", sortable: true, sorter:sorterStringCompare},
             {id: "ECO_min", name:"Min duration", field:"ECO_min"},
             {id: "ECO_opt", name:"Optimum duration", field:"ECO_opt"},
             {id: "change_ECO_opt", name:"Opt Changed", field:"change_ECO_opt"},
@@ -169,13 +173,16 @@
             {id: "WClast", name:"Last WC Paid Date", field:"WClast"},
             {id: "weeks_til_close", name:"Weeks Until WC Outcome", field:"weeks_til_close"},
             {id: "RPC_comp_date2", name:"RPC sorting column", field:"RPC_comp_date2"},
-            {id: "vulnerable", name:"Vulnerable Client", field:"vulnerable"},
-            {id: "imprison_ind", name:"Imprisonment Indicator", field:"imprison_ind"},
-            {id: "care_ind", name:"Care Indicator", field:"care_ind"},
+            {id: "vulnerable", name:"Vulnerable Client", field:"vulnerable",sortable: true, sorter:sorterStringCompare},
+            {id: "imprison_ind", name:"Imprisonment Indicator", field:"imprison_ind",sortable: true, sorter:sorterStringCompare},
+            {id: "care_ind", name:"Care Indicator", field:"care_ind",sortable: true, sorter:sorterStringCompare},
             {id: "ap_lastupdatedate", name:"Action Plan Last Update", field:"ap_lastupdatedate"},
             {id: "ap_CLIENTREVIEWDATE", name:"Action Plan Review Date", field:"ap_CLIENTREVIEWDATE"},
-            {id: "Portfolio_Comment", name: "Portfolio Comment", field:"Portfolio_Comment"}];
-        var data = getData("John Smith");
+            {id: "Portfolio_Comment", name: "Portfolio Comment", field:"Portfolio_Comment", sortable: true, sorter:sorterStringCompare},
+            {id: "Rehab_Comment", name:"Rehab Comment", field:"Rehab_Comment", sortable: true, sorter:sorterStringCompare},
+            {id: "Training_Comment", name:"Training Comment", field:"Training_Comment", sortable: true, sorter:sorterStringCompare},
+            {id: "Colour", name: "Colour", field:"Colour", sortable: true, sorter:sorterStringCompare}];
+       // var data = getData("John Smith");
 
         //alert(data[i].Case_Owner);
 
@@ -202,8 +209,6 @@
                 }
 
             }
-
-
 
 
             $(function () {
@@ -276,6 +281,9 @@
 
             <div class = "flex-item">
                 <h4>Carry Over Columns</h4>
+                <input type = "checkbox" name = "Training_Comment" value = "Training Comment"> Training Comment<br>
+                <input type = "checkbox" name = "Rehab_Comment" value = "Rehab Comment"> Rehab Comment<br>
+                <input type = "checkbox" name = "Colour" value = "Colour"> Colour<br>
 
                 <input type = "checkbox" name = "Portfolio_Comment" value = "Portfolio Comment"> Portfolio Comment<br>
 

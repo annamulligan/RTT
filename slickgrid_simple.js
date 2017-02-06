@@ -42,6 +42,14 @@ function makeGrid(columns, data){
     };
 
     $(function () {
+        data.getItemMetadata = function (row) {
+            if(row.Colour == "red"){
+                return {
+                    cssClasses: 'highlight'
+                }
+                }
+            }
+
 
 
         grid = new Slick.Grid("#myGrid", data, columns, options);
