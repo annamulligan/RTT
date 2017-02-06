@@ -40,15 +40,23 @@ function makeGrid(columns, data){
        enableColumnReorder: true,
         multiColumnSort: true
     };
+    data.getItemMetadata = function (row) {
+        if(data[row].Colour == "red"){
+            //alert(data[row].EventId);
+            return {
+                cssClasses: 'highlight_red'
+            }
+        }
+        else if(data[row].Colour == "purple"){
+            // alert(row);
+            return {
+                cssClasses: 'highlight_purple'
+            }
+        }
+    }
 
     $(function () {
-        data.getItemMetadata = function (row) {
-            if(row.Colour == "red"){
-                return {
-                    cssClasses: 'highlight'
-                }
-                }
-            }
+
 
 
 
