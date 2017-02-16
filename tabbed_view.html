@@ -205,10 +205,25 @@
             <div class = "flex-item">
                 <h4>Carry Over Columns</h4>
                 <input type = "checkbox" name = "Training_Comment" value = "Training Comment"> Training Comment<br>
-                <input type = "checkbox" name = "Rehab_Comment" value = "Rehab Comment"> Rehab Comment<br>
                 <input type = "checkbox" name = "Colour" value = "Colour"> Colour<br>
+                <input type = "checkbox" name = "RIS_Stream" value = "RIS Stream"> RIS Streamt<br>
+                <input type = "checkbox" name = "Flag" value = "Flag"> Flag<br>
+                <input type = "checkbox" name = "TM_Rehab" value = "TM Rehab"> TM Rehab<br>
+                <input type = "checkbox" name = "Revisit_Date" value = "Revisit Date"> Revisit Date<br>
+                <input type = "checkbox" name = "Date_Saved" value = "Date Saved"> Date Saved<br>
 
                 <input type = "checkbox" name = "Portfolio_Comment" value = "Portfolio Comment"> Portfolio Comment<br>
+                <input type = "checkbox" name = "PC_Saved_Date" value = "Portfolio Comment Saved Date"> Portfolio Comment Saved Date<br>
+                <input type = "checkbox" name = "Job_Status" value = "Job Status"> Job Status<br>
+                <input type = "checkbox" name = "Vulnerable_Client" value = "Vulnerable Client"> Vulnerable Client<br>
+                <input type = "checkbox" name = "Reason_For_React" value = "Reason for Reactivation"> Reason for Reactivation<br>
+
+                <input type = "checkbox" name = "Rehab_Comment" value = "Rehab Comment"> Rehab Comment<br>
+                <input type = "checkbox" name = "Rehab_Advice_Date" value = "Rehab Advice Date"> Rehab Advice Date<br>
+                <input type = "checkbox" name = "Rehab_Summary" value = "Rehab Summary"> Rehab Summary<br>
+                <input type = "checkbox" name = "Rehab_Revisit_Date" value = "Rehab Revisit Date"> Rehab Revisit Date<br>
+
+
 
             </div>
 
@@ -250,7 +265,47 @@
 
 
 <div id="TrainingView" class="tabcontent">
-    <h2 id = "pass">122345</h2>
+    <form id = "StaticField">
+        Claim Number:
+        <input type="text" name="evid" id = "evid" readonly>
+
+    </form>
+
+    <form id = "COform">
+        Portfolio Comment:
+        <br>
+        <input type="text" name="PCcomm" id = "PCcomm">
+        <br>
+        Job Status:
+        <br>
+        <select name="jobstat" id = "jobstat">
+            <option value=""></option>
+            <option value="Employed">Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Job Lost">Job Lost</option>
+        </select>
+        <br>
+        Reason for Reactivation:
+        <br>
+        <select name="reason" id = "reason">
+            <option value=""></option>
+            <option value="reason1">Reason1</option>
+            <option value="reason2">Reason2</option>
+            <option value="reason3">Reason3</option>
+        </select>
+        <br>
+        Vulnerable Client:
+        <br>
+        <select name="vuln" id = "vuln">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+            <option value=""></option>
+        </select>
+        <br>
+        Save Date:
+        <br>
+            <input type="text" name="saved" id = "saved" readonly>
+    </form>
 
 </div>
 

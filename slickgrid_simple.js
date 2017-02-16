@@ -91,8 +91,11 @@ function makeGrid(columns, data){
                 //window.open("google.com", _self);
 
                 var eventid = data[cell.row].EventId;
-                openTab2(event,'TrainingView', eventid);
-                //window.open("https://www.w3schools.com");
+                var pccomm = data[cell.row].Portfolio_Comment;
+                var savd = new Date();
+                var savd = savd.getDate() + "/" + (savd.getMonth()+1) + "/" + savd.getFullYear();
+               //alert(savd);
+                openTab2(event,'TrainingView', eventid, pccomm, savd);
                 e.stopPropagation();
             }
 
@@ -100,8 +103,14 @@ function makeGrid(columns, data){
 
     })
 }
-function openTab2(evt, tabName, eventid) {
-    document.getElementById("pass").innerHTML = eventid;
+function openTab2(evt, tabName, eventid, pccomm, savd) {
+
+
+    document.forms["StaticField"].elements["evid"].value = eventid;
+    document.forms["COform"].elements["PCcomm"].value = pccomm;
+    document.forms["COform"].elements["saved"].value= savd;
+    document.forms["COform"].elements["jobstat"].value= "Unemployed";
+
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {

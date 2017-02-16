@@ -68,7 +68,20 @@ function defineCols(){
         {id: "Portfolio_Comment", name: "Portfolio Comment", field:"Portfolio_Comment", sortable: true, sorter:sorterStringCompare},
         {id: "Rehab_Comment", name:"Rehab Comment", field:"Rehab_Comment", sortable: true, sorter:sorterStringCompare},
         {id: "Training_Comment", name:"Training Comment", field:"Training_Comment", sortable: true, sorter:sorterStringCompare},
-        {id: "Colour", name: "Colour", field:"Colour", sortable: true, sorter:sorterStringCompare}];
+        {id: "Colour", name: "Colour", field:"Colour", sortable: true, sorter:sorterStringCompare},
+        {id: "PC_Date_Saved", name:"Portfolio Comment Saved Date", field:"PC_Date_Saved"},
+        {id: "Date_Saved", name:"Date Saved", field:"Date_Saved"},
+        {id: "Rehab_Advice_Date", name:"Rehab Advice Date", field:"Rehab_Advice_Date"},
+        {id: "RIS_Stream", name:"RIS Stream", field:"RIS_Stream"},
+        {id: "Revisit_Date", name:"Revisit Date", field:"Revisit_Date"},
+        {id: "Flag", name:"Flag", field:"Flag"},
+        {id: "Job_Status", name:"Job Status", field:"Job_Status"},
+        {id: "Vulnerable_Client", name:"Vulnerable Client", field:"Vulnerable_Client"},
+        {id: "Reason_For_React", name:"Reason for Reactivation", field:"Reason_For_React"},
+        {id: "TM_Rehab", name:"TM Rehab", field:"TM_Rehab"},
+        {id: "Rehab_Summary", name:"Rehab Summary", field:"Rehab_Summary"},
+        {id: "Rehab_Revisit_Date", name:"Rehab Revisit Date", field:"Rehab_Revisit_Date"}
+    ];
 
     return columns1;
 
