@@ -89,12 +89,33 @@ function makeGrid(columns, data){
             //if the column was priority do this stuff
             if (grid.getColumns()[cell.cell].id == "EventId") {
                 //window.open("google.com", _self);
+
                 var eventid = data[cell.row].EventId;
-                alert(eventid);
+                openTab2(event,'TrainingView', eventid);
+                //window.open("https://www.w3schools.com");
                 e.stopPropagation();
             }
 
         });
 
     })
+}
+function openTab2(evt, tabName, eventid) {
+    document.getElementById("pass").innerHTML = eventid;
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    
+
+    if(tabName == "Myclaims"){
+        myClaims();
+    }
 }

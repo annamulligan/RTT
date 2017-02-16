@@ -91,11 +91,12 @@
 
 <body>
 
-<p>Click on the links inside the tabbed menu:</p>
+<p id = "nuthin">Click on the links inside the tabbed menu:</p>
 
 <ul class="tab">
     <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'ReportCols')">Report Columns</a></li>
     <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Myclaims')">My Claims</a></li>
+    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'TrainingView')">Training View</a></li>
 
 </ul>
 
@@ -248,6 +249,12 @@
  </div>
 
 
+<div id="TrainingView" class="tabcontent">
+    <h2 id = "pass">122345</h2>
+
+</div>
+
+
 
  <script>
      function openTab(evt, tabName) {
@@ -262,6 +269,7 @@
          }
          document.getElementById(tabName).style.display = "block";
          evt.currentTarget.className += " active";
+
 
          if(tabName == "Myclaims"){
              myClaims();
