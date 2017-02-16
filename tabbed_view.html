@@ -10,6 +10,7 @@
     <script src="getColListFromChecks.js"></script>
     <script src="getStaticData.js"></script>
     <script src="slickgrid_simple.js"></script>
+    <script src="columnDefs.js"></script>
 </head>
 
 
@@ -93,23 +94,18 @@
 <p>Click on the links inside the tabbed menu:</p>
 
 <ul class="tab">
-    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'ReportCols')">Report Columns</a></li>
-    <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Myclaims')">My Claims</a></li>
+    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'ReportCols')">Report Columns</a></li>
+    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Myclaims')">My Claims</a></li>
 
 </ul>
 
 <div id="Myclaims" class="tabcontent">
-    <h3>My Claims</h3>
-
-
     <table width="100%">
         <tr>
             <td valign="top" width="50%">
                 <div id="myGrid" style="width:1000px;height:700px;"></div>
             </td>
             <td valign="top">
-
-
             </td>
         </tr>
     </table>
@@ -124,109 +120,26 @@
     <script src="SlickGrid-master/slick.grid.js"></script>
 
     <script>
-
-
-        var columns1 = [{id: "tm_name", name:"Team Manager", field:"tm_name", sortable: true, sorter:sorterStringCompare},
-            {id: "CO_name_com", name:"Case Owner", field:"CO_name_com", sortable: true, sorter:sorterStringCompare},
-            {id: "EventId", name:"Claim Number", field:"EventId", sortable: true, sorter:sorterNumeric},
-            {id: "Claim_rating", name:"Claim rating", field:"Claim_rating", sortable: true, sorter:sorterStringCompare},
-            {id: "ECO_min", name:"Min duration", field:"ECO_min"},
-            {id: "ECO_opt", name:"Optimum duration", field:"ECO_opt"},
-            {id: "change_ECO_opt", name:"Opt Changed", field:"change_ECO_opt"},
-            {id: "ECO_max", name:"Max duration", field:"ECO_max"},
-            {id: "wcdays", name:"WC days actually paid", field:"wcdays"},
-            {id: "WC_to", name:"WC to Date", field:"WC_to"},
-            {id: "Next_KPI", name:"Next KPI", field:"Next_KPI"},
-            {id: "Next_KPI_crossing_date", name:"Next KPI Crossing Date", field:"Next_KPI_crossing_date"},
-            {id: "next_monitor_task_date", name:"Next Monitor Task Date", field:"next_monitor_task_date"},
-            {id: "Accident_date", name:"Accident Date", field:"Accident_date"},
-            {id: "IRP_required", name:"IRP Required Date", field:"IRP_required"},
-            {id: "IRP_expiry_date", name:"IRP expiry date", field:"IRP_expiry_date"},
-            {id: "taxi_expiry", name:"Taxi Expiry", field:"taxi_expiry"},
-            {id: "RTW_TARGETDATE", name:"RTW date", field:"RTW_TARGETDATE"},
-            {id: "RTW_RESULTRATIONAL", name:"Result Rationale", field:"RTW_RESULTRATIONAL"},
-            {id: "allocation_date", name:"Allocation Date", field:"allocation_date"},
-            {id: "ACC012_creationdate_date", name:"Last ACC012 Creation Date", field:"ACC012_creationdate_date"},
-            {id: "ACC012_status", name:"Last ACC012 Status", field:"ACC012_status"},
-            {id: "IncapToDate", name:"Medical Incap to Date", field:"IncapToDate"},
-            {id: "approved_incap_to", name:"Approved Incap To Date", field:"approved_incap_to"},
-            {id: "incap_duration", name:"Incap Duration", field:"incap_duration"},
-            {id: "IncapTypeCode", name:"Incap Type", field:"IncapTypeCode"},
-            {id: "Form", name:"Form", field:"Form"},
-            {id: "MFPContactNameDefault", name:"Provider On Med Cert", field:"MFPContactNameDefault"},
-            {id: "WC_Entitle_summary", name:"Last WC Entitlement Summary", field:"WC_Entitle_summary"},
-            {id: "WC_Entitlement_status", name:"Last WC Entitlement Status", field:"WC_Entitlement_status"},
-            {id: "warning", name:"Alerts", field:"warning"},
-            {id: "VRS_new", name:"Recent VRS services", field:"VRS_new"},
-            {id: "VendorName", name:"Vendor Name", field:"VendorName"},
-            {id: "HCS_POAmountGross", name:"HCSS/HBNR Amount", field:"HCS_POAmountGross"},
-            {id: "HCS_POQuantityApproved", name:"HCSS/HBNR Quantity Approved", field:"HCS_POQuantityApproved"},
-            {id: "HCS_POServiceDuration", name:"HCSS/HBNR Duration (days)", field:"HCS_POServiceDuration"},
-            {id: "HCS_POServiceTo", name:"HCSS/HBNR To Date", field:"HCS_POServiceTo"},
-            {id: "IR_POAmountGross", name:"IR Amount", field:"IR_POAmountGross"},
-            {id: "IR_POServiceDuration", name:"IR duration (days)", field:"IR_POServiceDuration"},
-            {id: "IR_POServiceTo", name:"IR To Date", field:"IR_POServiceTo"},
-            {id: "eq_amount", name:"Equipment Amount", field:"eq_amount"},
-            {id: "IRA_amount", name:"IRA Amount", field:"IRA_amount"},
-            {id: "age", name:"Age", field:"age", sortable: true, formatter: intFormatter, sorter:sorterNumeric},
-            {id: "change_diag", name:"Diag Changed", field:"change_diag"},
-            {id: "ms_diag_desc", name:"Diagnosis", field:"ms_diag_desc"},
-            {id: "wt_occu", name:"Occupation", field:"wt_occu"},
-            {id: "Occupationdesc", name:"Occupation Without Worktype", field:"Occupationdesc"},
-            {id: "STAGE", name:"SCU Stage", field:"STAGE"},
-            {id: "scu_ddd", name:"SCU Cover Decision Due Date", field:"scu_ddd"},
-            {id: "last_paydate", name:"Last SCU Payment Date", field:"last_paydate"},
-            {id: "IBSC_task_date", name:"IBSC Task Target Date", field:"IBSC_task_date"},
-            {id: "RPC_comp_date3", name:"RPC Due Date", field:"RPC_comp_date3"},
-            {id: "EmplType_word", name:"Employment Type", field:"EmplType_word"},
-            {id: "WClast", name:"Last WC Paid Date", field:"WClast"},
-            {id: "weeks_til_close", name:"Weeks Until WC Outcome", field:"weeks_til_close"},
-            {id: "RPC_comp_date2", name:"RPC sorting column", field:"RPC_comp_date2"},
-            {id: "vulnerable", name:"Vulnerable Client", field:"vulnerable",sortable: true, sorter:sorterStringCompare},
-            {id: "imprison_ind", name:"Imprisonment Indicator", field:"imprison_ind",sortable: true, sorter:sorterStringCompare},
-            {id: "care_ind", name:"Care Indicator", field:"care_ind",sortable: true, sorter:sorterStringCompare},
-            {id: "ap_lastupdatedate", name:"Action Plan Last Update", field:"ap_lastupdatedate"},
-            {id: "ap_CLIENTREVIEWDATE", name:"Action Plan Review Date", field:"ap_CLIENTREVIEWDATE"},
-            {id: "Portfolio_Comment", name: "Portfolio Comment", field:"Portfolio_Comment", sortable: true, sorter:sorterStringCompare},
-            {id: "Rehab_Comment", name:"Rehab Comment", field:"Rehab_Comment", sortable: true, sorter:sorterStringCompare},
-            {id: "Training_Comment", name:"Training Comment", field:"Training_Comment", sortable: true, sorter:sorterStringCompare},
-            {id: "Colour", name: "Colour", field:"Colour", sortable: true, sorter:sorterStringCompare}];
-       // var data = getData("John Smith");
-
-        //alert(data[i].Case_Owner);
-
-
+        var allColumns = defineCols();
 
         function myClaims() {
-            data = getData("John Smith");
-            var selections = [];
-            selections = getCols();
-
-
+            var data = getData("John Smith");
+            var selections = getCols("ReportColsList");
 
             var columns =[];
-            columns[0] = columns1[2];
+            columns[0] = allColumns[2];
 
-            for (var j in columns1){
-                //alert(columns1[j]);
+            for (var j in allColumns){
                 for (i = 0; i <  selections.length; i++){
-                    if (columns1[j].name == selections[i]){
-                        // alert(selections[i].name);
-                        columns[i] = columns1[j];
+                    if (allColumns[j].name == selections[i]){
+                        columns[i] = allColumns[j];
                     }
-
                 }
-
             }
-
 
             $(function () {
-
                 makeGrid(columns, data);
-
-
-            }
-            )
+            })
         }
     </script>
 
@@ -328,36 +241,16 @@
                 <input type = "checkbox" name = "last_paydate" value = "Last SCU Payment Date"> Last SCU Payment Date<br>
                 <input type = "checkbox" name = "IBSC_task_date" value = "IBSC Task Target Date"> IBSC Task Target Date<br>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- <input type="button" onclick = "getSelection()" value="Finished Selecting">
-            -->
          </div>
      </form>
-     <script>
-       /*  function getSelection(){
 
-             return getCols();
-         }*/
-     </script>
 
  </div>
 
 
 
  <script>
-     function openCity(evt, cityName) {
+     function openTab(evt, tabName) {
          var i, tabcontent, tablinks;
          tabcontent = document.getElementsByClassName("tabcontent");
          for (i = 0; i < tabcontent.length; i++) {
@@ -367,10 +260,10 @@
          for (i = 0; i < tablinks.length; i++) {
              tablinks[i].className = tablinks[i].className.replace(" active", "");
          }
-         document.getElementById(cityName).style.display = "block";
+         document.getElementById(tabName).style.display = "block";
          evt.currentTarget.className += " active";
 
-         if(cityName == "Myclaims"){
+         if(tabName == "Myclaims"){
              myClaims();
          }
      }

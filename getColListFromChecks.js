@@ -1,8 +1,8 @@
 /**
  * Created by ajmul on 2/2/2017.
  */
-function getCols(){
-    var checkBoxListId = "ReportColsList"
+function getCols(checkBoxListId){
+    //var checkBoxListId = "ReportColsList"
     var elementRef = document.getElementById(checkBoxListId);
     var checkBoxArray = elementRef.getElementsByTagName('input');
     var selections = [];

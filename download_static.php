@@ -41,7 +41,8 @@
         $conn->close();
     }
 
-
+//function to get the static data and the comment data for a given report.
+//echos the result as a JSON encoded array
 function getStaticAndComms($ReportOwner){
     $servername = "localhost";
     $username = "root";

@@ -82,5 +82,19 @@ function makeGrid(columns, data){
             grid.render();
         });
 
+        grid.onClick.subscribe(function (e) {
+
+            //find which cell was pressed
+            var cell = grid.getCellFromEvent(e);
+            //if the column was priority do this stuff
+            if (grid.getColumns()[cell.cell].id == "EventId") {
+                //window.open("google.com", _self);
+                var eventid = data[cell.row].EventId;
+                alert(eventid);
+                e.stopPropagation();
+            }
+
+        });
+
     })
 }

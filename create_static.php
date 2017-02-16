@@ -35,46 +35,19 @@
     }
 
     // sql to create table
-    $sql = "CREATE TABLE StaticData (
-    eventid INT(6) PRIMARY KEY, 
-    CaseOwner VARCHAR(30) NOT NULL,
-    Age Int(6) NOT NULL
+    $sql = "CREATE TABLE Users (
+    username CHAR(50) PRIMARY KEY, 
+    password VARCHAR(30) NOT NULL
     )";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Table StaticData created successfully";
+        echo "Table Users created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
 
 
 
-    $sql = "INSERT INTO StaticData (eventid, CaseOwner, Age)
-    VALUES (225,'John Smitt', 16)";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $sql = "INSERT INTO StaticData (eventid, CaseOwner, Age)
-        VALUES (245,'John Smitt', 18)";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $sql = "INSERT INTO StaticData (eventid, CaseOwner, Age)
-        VALUES (2125,'John Smitt', 45)";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    $conn->close();
 
 ?>
