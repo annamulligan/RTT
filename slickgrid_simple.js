@@ -86,16 +86,15 @@ function makeGrid(columns, data){
 
             //find which cell was pressed
             var cell = grid.getCellFromEvent(e);
-            //if the column was priority do this stuff
+
             if (grid.getColumns()[cell.cell].id == "EventId") {
-                //window.open("google.com", _self);
 
                 var eventid = data[cell.row].EventId;
                 var pccomm = data[cell.row].Portfolio_Comment;
-                var savd = new Date();
-                var savd = savd.getDate() + "/" + (savd.getMonth()+1) + "/" + savd.getFullYear();
-               //alert(savd);
-                openTab2(event,'TrainingView', eventid, pccomm, savd);
+                var savd = data[cell.row].PC_Date_Saved;
+                var jobstat = data[cell.row].Job_Status;
+
+                openTab2(event,'TrainingView', eventid, pccomm, savd, jobstat);
                 e.stopPropagation();
             }
 
@@ -103,13 +102,15 @@ function makeGrid(columns, data){
 
     })
 }
-function openTab2(evt, tabName, eventid, pccomm, savd) {
+function openTab2(evt, tabName, eventid, pccomm, savd, jobstat) {
 
 
-    document.forms["StaticField"].elements["evid"].value = eventid;
+    //document.forms["StaticField"].elements["evid"].href = "www.google.com";//eventid;
+    document.getElementById("evid").setAttribute('href', 'http://www.google.com');
+    document.getElementById("evid").innerHTML = eventid;
     document.forms["COform"].elements["PCcomm"].value = pccomm;
     document.forms["COform"].elements["saved"].value= savd;
-    document.forms["COform"].elements["jobstat"].value= "Unemployed";
+    document.forms["COform"].elements["jobstat"].value= jobstat;
 
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
